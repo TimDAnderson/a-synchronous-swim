@@ -7,38 +7,66 @@
   //
   // TODO: build the swim command fetcher here
   //
+  // const getRequest = (successCB, errorCB = null, path) => {
+  //   console.log('we are sending a GET command');
+  //       $.ajax({
+  //     url: `${serverUrl}/${path}`,
+  //     type: 'GET',
+  //     // data: { order: '-createdAt' },
+  //     // contentType: 'application/json',
+  //     success: successCB,
+  //     error: errorCB || function(error) {
+  //       console.error('aSync Swim: Failed to fetch messages', error);
+  //     }
+  //   });
+  // }
+
   const getRequest = (successCB, errorCB = null, path) => {
-    console.log('we are sending a GET command');
         $.ajax({
       url: `${serverUrl}/${path}`,
       type: 'GET',
-      // data: { order: '-createdAt' },
-      // contentType: 'application/json',
       success: successCB,
       error: errorCB || function(error) {
         console.error('aSync Swim: Failed to fetch messages', error);
-      }
-    });
-  }
-
-
-
-  async function waitTime(time) {
-    return new Promise((resolve) => {
-       setTimeout(resolve, time);
-    });
-  }
-  async function messageTyper() {
-    while (true) {
-       await waitTime(100);
-       console.log('my spaced out message')
-      //  SwimTeam.move('left');
-      getRequest((data)=>{
-        console.log(data)
+      },
+      complete: setTimeout(()=>{getRequest((data)=>{
         SwimTeam.move(data);
-      }, null, 'swimCommand')
-    }
+      }, null, 'swimCommand')}, 100)
+    });
   }
+
+
+  setTimeout(()=>{getRequest((data)=>{
+    SwimTeam.move(data);
+  }, null, 'swimCommand')}, 100)
+
+
+
+  // setInterval(()=>{getRequest((data)=>{
+  //   console.log(data)
+  //   SwimTeam.move(data);
+  // }, null, 'swimCommand')}, 100)
+
+
+  // setTimeout(messageTyper,0);
+
+
+  // async function waitTime(time) {
+  //   return new Promise((resolve) => {
+  //      setTimeout(resolve, time);
+  //   });
+  // }
+  // async function messageTyper() {
+  //   while (true) {
+  //      await waitTime(100);
+  //      console.log('my spaced out message')
+  //     //  SwimTeam.move('left');
+  //     getRequest((data)=>{
+  //       console.log(data)
+  //       SwimTeam.move(data);
+  //     }, null, 'swimCommand')
+  //   }
+  // }
 
   // messageTyper();
 

@@ -11,7 +11,7 @@ h3 {
   height: 202px;
   width: 622px;
 }
-body {
+.background {
   background-image: url(http://127.0.0.1:3000/background.jpg);
 }
 .team {
@@ -38,4 +38,17 @@ body {
 }
 .turn-down {
   transform: rotate(270deg);
+}
+
+.turn-upleft {
+  transform: rotate(45deg);
+}
+.turn-upright {
+  transform: rotate(135deg);
+}
+.turn-downright {
+  transform: rotate(225deg);
+}
+.turn-downleft {
+  transform: rotate(315deg);
 }

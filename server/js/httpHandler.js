@@ -17,10 +17,10 @@ module.exports.initialize = (queue) => {
 };
 
 module.exports.router = (req, res, next = ()=>{}) => {
-  console.log('this is the request object')
+  //console.log('this is the request object')
   // console.log(req);
 
-  console.log('Serving request type ' + req.method + ' for url ' + req.url);
+  //console.log('Serving request type ' + req.method + ' for url ' + req.url);
 
 
   if (req.method === 'OPTIONS') {
@@ -28,6 +28,8 @@ module.exports.router = (req, res, next = ()=>{}) => {
     // console.log(res);
     res.end();
     next()
+
+
   } else if ((req.method === 'GET') && (req.url.includes('swimCommand'))) {
     let message = 'left';
     // var movementArray = ['up', 'down', 'left', 'right'];
@@ -39,13 +41,13 @@ module.exports.router = (req, res, next = ()=>{}) => {
     message = messages.dequeue()
     message = message ? message : ''
 
-    console.log(' message: ', message)
+    //console.log(' message: ', message)
     res.write(message);
     res.end();
     next()
+
+
   } else if ((req.method === 'GET')  && (req.url.includes('background'))) {
-
-
     var fileData
     //run fs.readFile
     fs.readFile(module.exports.backgroundImageFile, (err, data) => {
@@ -61,6 +63,8 @@ module.exports.router = (req, res, next = ()=>{}) => {
       }
       next()
     })
+
+
   } else if ((req.method === 'POST')  && (req.url.includes('background'))) {
     console.log('IN THE POST REQUEST')
     let body = '';
@@ -79,15 +83,6 @@ module.exports.router = (req, res, next = ()=>{}) => {
       console.log(cleanData)
       // console.log(cleanData.data)
 
-      // if (cleanData === null) {
-      //   console.log('we detected cleanData === null')
-      //   res.writeHead(201, headers);
-      //   res.end();
-      //   next();
-      // }
-      // cleanData = cleanData ===  null ? buf : cleanData
-      //cleanData = cleanData ? cleanData : buf
-
       fs.writeFile(module.exports.backgroundImageFile, cleanData.data, (err) => {
         if (err) {
           res.writeHead(404, headers);
@@ -104,4 +99,5 @@ module.exports.router = (req, res, next = ()=>{}) => {
     })
 
   }
+
 };
