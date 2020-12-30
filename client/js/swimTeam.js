@@ -7,14 +7,15 @@ const SwimTeam = {
 
 
   spin: ()=>{
-    setTimeout(()=>{SwimTeam.move('up')}, 0);
-    setTimeout(()=>{SwimTeam.move('upright')}, 200);
-    setTimeout(()=>{SwimTeam.move('right')}, 400);
-    setTimeout(()=>{SwimTeam.move('downright')}, 600);
-    setTimeout(()=>{SwimTeam.move('down')}, 800);
-    setTimeout(()=>{SwimTeam.move('downleft')}, 1000);
-    setTimeout(()=>{SwimTeam.move('left')}, 1200);
-    setTimeout(()=>{SwimTeam.move('upleft')}, 1400);
+    let timeoutDelay = 0;
+    let flipMoves = [
+      'up', 'upright', 'right', 'downright', 'down', 'downleft', 'left', 'upleft', 'up', 'upright', 'right', 'downright', 'down', 'downleft', 'left', 'upleft', 'up', 'upright', 'right', 'downright', 'down', 'downleft', 'left', 'upleft', 'up', 'upright', 'right', 'downright', 'down', 'downleft', 'left', 'upleft'
+    ]
+
+    for (let i = 0; i < flipMoves.length; i++) {
+      setTimeout(()=>{SwimTeam.move(flipMoves[i])}, timeoutDelay);
+      timeoutDelay += 20
+    }
   },
 
 
@@ -25,6 +26,18 @@ const SwimTeam = {
     for (let i = 0; i < 60; i++) {
       SwimTeam.move('down')
     }
+
+    let timeoutDelay = 0;
+    let flipMoves = [
+      'up', 'up', 'up', 'up','up', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'upright', 'up', 'up', 'up', 'up', 'up', 'up', 'up', 'up', 'up', 'up', 'up', 'up', 'up', 'upleft', 'upleft', 'upleft', 'upleft', 'upleft', 'upleft', 'upleft', 'upleft', 'upleft', 'upleft', 'upleft', 'upleft', 'upleft', 'upleft', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'downleft', 'down', 'down', 'down', 'down', 'down', 'down', 'down', 'down', 'down', 'down', 'down', 'down', 'down', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'downright', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right', 'right'
+    ]
+
+    for (let i = 0; i < flipMoves.length; i++) {
+      setTimeout(()=>{SwimTeam.move(flipMoves[i])}, timeoutDelay);
+      timeoutDelay += 20
+    }
+
+
 
   },
 
